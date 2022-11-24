@@ -56,7 +56,7 @@ LoadMoreListView.builder(
 );
 ```
 
-![LoadMoreListView.builder](https://github.com/stevenBang/loadmore_listview/tree/main/example/gif/loadmore.gif)
+![LoadMoreListView.builder](https://media.giphy.com/media/BsyHEpLrxFCCLaANKg/giphy.gif)
 
 
 ### LoadMoreListView.separated
