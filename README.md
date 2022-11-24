@@ -19,6 +19,7 @@ Import it:
 import 'package:loadmore_listview/loadmore_listview.dart';
 ```
 
+![LoadMoreListView.builder](https://media.giphy.com/media/BsyHEpLrxFCCLaANKg/giphy.gif)
 
 ## Usage Examples
 
@@ -55,9 +56,6 @@ LoadMoreListView.builder(
     },
 );
 ```
-
-![LoadMoreListView.builder](https://media.giphy.com/media/BsyHEpLrxFCCLaANKg/giphy.gif)
-
 
 ### LoadMoreListView.separated
 ```dart
