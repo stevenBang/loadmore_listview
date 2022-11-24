@@ -1,6 +1,6 @@
 name: loadmore_listview
 description: An Listview with the Load more item and refresh
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/stevenBang/loadmore_listview
 repository: https://github.com/stevenBang/loadmore_listview
 
@@ -10,8 +10,6 @@ environment:
 
 dependencies:
   flutter:
-    sdk: flutter
-  flutter_web_plugins:
     sdk: flutter
 
 dev_dependencies:
