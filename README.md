@@ -24,7 +24,6 @@ import 'package:loadmore_listview/loadmore_listview.dart';
 
 ### LoadMoreListView.builder
 ```dart
-// Here, default theme colors are used for activeBgColor, activeFgColor, inactiveBgColor and inactiveFgColor
 LoadMoreListView.builder(
     haveMoreItem: true,
     //Trigger the bottom loadmore callback
