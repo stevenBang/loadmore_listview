@@ -4,12 +4,69 @@ An Listview with the Load more item and refresh
 
 ## Getting Started
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+In the `pubspec.yaml` of your flutter project, add the following dependency:
 
-For help getting started with Flutter development, view the
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```yaml
+dependencies:
+  ...
+  loadmore_listview: ^1.0.0
+```
 
+
+Import it:
+
+```dart
+import 'package:loadmore_listview/loadmore_listview.dart';
+```
+
+
+## Usage Examples
+
+### LoadMoreListView.builder
+```dart
+// Here, default theme colors are used for activeBgColor, activeFgColor, inactiveBgColor and inactiveFgColor
+LoadMoreListView.builder(
+    haveMoreItem: true,
+    //Trigger the bottom loadmore callback
+    onLoadMore: () async{
+      //await your api
+      await Future.delayed(const Duration(seconds: 1));
+    },
+    //pull down refresh callback
+    onRefresh: () async{
+      //await your api
+      await Future.delayed(const Duration(seconds: 1));
+    },
+    //you can set your loadmore Animation
+    loadMoreWidget: Container(
+        margin: const EdgeInsets.all(20.0),
+        alignment: Alignment.center,
+        child: const CircularProgressIndicator(
+          valueColor: AlwaysStoppedAnimation(Colors.blueAccent),
+        ),
+    ),
+    itemCount: 20,
+    itemBuilder: (context, index) {
+        return Container(
+            margin: const EdgeInsets.all(30),
+            width: double.infinity,
+            alignment: Alignment.center,
+            child: Text('$index'),
+        );
+    },
+);
+```
+
+![LoadMore ListView](https://github.com/stevenBang/loadmore_listview/tree/main/example/gif/loadmore.gif)
+
+
+### LoadMoreListView.separated
+```dart
+// Here, default theme colors are used for activeBgColor, activeFgColor, inactiveBgColor and inactiveFgColor
+LoadMoreListView.builder(
+    //...
+    separatorBuilder: (context, index) {
+      return const Divider();
+    },
+);
+```
