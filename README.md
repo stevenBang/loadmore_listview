@@ -11,7 +11,7 @@ In the `pubspec.yaml` of your flutter project, add the following dependency:
 ```yaml
 dependencies:
   ...
-  loadmore_listview: ^1.0.0
+  loadmore_listview: ^1.0.2
 ```
 
 
