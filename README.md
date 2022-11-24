@@ -2,6 +2,8 @@
 
 An Listview with the Load more item and refresh
 
+![LoadMoreListView.builder](https://media.giphy.com/media/BsyHEpLrxFCCLaANKg/giphy.gif)
+
 ## Getting Started
 
 In the `pubspec.yaml` of your flutter project, add the following dependency:
@@ -18,9 +20,6 @@ Import it:
 ```dart
 import 'package:loadmore_listview/loadmore_listview.dart';
 ```
-
-![LoadMoreListView.builder](https://media.giphy.com/media/BsyHEpLrxFCCLaANKg/giphy.gif)
-
 ## Usage Examples
 
 ### LoadMoreListView.builder
