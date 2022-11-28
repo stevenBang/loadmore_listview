@@ -58,8 +58,7 @@ LoadMoreListView.builder(
 
 ### LoadMoreListView.separated
 ```dart
-// Here, default theme colors are used for activeBgColor, activeFgColor, inactiveBgColor and inactiveFgColor
-LoadMoreListView.builder(
+LoadMoreListView.separated(
     //...
     separatorBuilder: (context, index) {
       return const Divider();
