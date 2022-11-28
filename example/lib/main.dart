@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> {
           children: [
             Expanded(
               child: LoadMoreListView.separated(
-                haveMoreItem: _hasNext,
+                hasMoreItem: _hasNext,
                 onLoadMore: loaMoreList,
                 onRefresh: refreshList,
                 refreshBackgroundColor: Colors.blueAccent,

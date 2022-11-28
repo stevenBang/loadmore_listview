@@ -11,7 +11,7 @@ class LoadMoreListView extends StatefulWidget {
     this.onLoadMore,
     this.onRefresh,
     this.itemCount = 0,
-    this.haveMoreItem = true,
+    this.hasMoreItem = true,
     this.loadMoreWidget,
     //refresh
     this.refreshBackgroundColor = Colors.blueAccent,
@@ -55,7 +55,7 @@ class LoadMoreListView extends StatefulWidget {
     this.onLoadMore,
     this.onRefresh,
     this.itemCount = 0,
-    this.haveMoreItem = true,
+    this.hasMoreItem = true,
     this.loadMoreWidget,
     //refresh
     this.refreshBackgroundColor = Colors.blueAccent,
@@ -91,7 +91,7 @@ class LoadMoreListView extends StatefulWidget {
         super(key: key);
 
   ///Is there more data to load
-  final bool haveMoreItem;
+  final bool hasMoreItem;
 
   ///Trigger the bottom loadMore callback
   final LoadMoreCallback? onLoadMore;
@@ -333,7 +333,7 @@ class _LoadMoreListViewState extends State<LoadMoreListView> {
 
   loadMore() async {
     //If there are no more items, jump out
-    if (!widget.haveMoreItem) return;
+    if (!widget.hasMoreItem) return;
     //If loading, jump out
     if (_isLoadMore) return;
     //If there is no onLoadMore call back, jump out
