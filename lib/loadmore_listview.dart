@@ -4,48 +4,8 @@ import 'package:flutter/material.dart';
 typedef LoadMoreCallback = Future<void> Function();
 
 class LoadMoreListView extends StatefulWidget {
-  final bool haveMoreItem;
-  final LoadMoreCallback? onLoadMore;
-  final RefreshCallback? onRefresh;
-  final Widget? loadMoreWidget;
 
-  ///ListView
-  final int itemCount;
-  final IndexedWidgetBuilder itemBuilder;
-  final IndexedWidgetBuilder? separatorBuilder;
-  final ScrollController? controller;
-  final Axis scrollDirection;
-  final bool reverse;
-  final bool? primary;
-  final bool shrinkWrap;
-  final EdgeInsetsGeometry? padding;
-  final double? itemExtent;
-  final Widget? prototypeItem;
-  final ChildIndexGetter? findChildIndexCallback;
-  final bool addAutomaticKeepAlives;
-  final bool addRepaintBoundaries;
-  final bool addSemanticIndexes;
-  final double? cacheExtent;
-  final int? semanticChildCount;
-  final DragStartBehavior dragStartBehavior;
-  final ScrollViewKeyboardDismissBehavior keyboardDismissBehavior;
-  final String? restorationId;
-  final Clip clipBehavior;
-
-  ///Refresh
-  final double refreshDisplacement;
-  final double refreshEdgeOffset;
-  final Color? refreshColor;
-  final Color refreshBackgroundColor;
-  final String? refreshSemanticsLabel;
-  final String? refreshSemanticsValue;
-  final double refreshStrokeWidth;
-  final RefreshIndicatorTriggerMode refreshTriggerMode;
-
-  ///animation
-  final Duration scrollToLoadMoreWidgetDuration;
-  final Curve scrollToLoadMoreWidgetCurve;
-
+  ///builder
   const LoadMoreListView.builder({
     Key? key,
     required this.itemBuilder,
@@ -54,8 +14,7 @@ class LoadMoreListView extends StatefulWidget {
     this.itemCount = 0,
     this.haveMoreItem = true,
     this.loadMoreWidget,
-
-    ///refresh
+    //refresh
     this.refreshBackgroundColor = Colors.blueAccent,
     this.refreshDisplacement = 40.0,
     this.refreshEdgeOffset = 0.0,
@@ -64,8 +23,7 @@ class LoadMoreListView extends StatefulWidget {
     this.refreshSemanticsValue,
     this.refreshStrokeWidth = RefreshProgressIndicator.defaultStrokeWidth,
     this.refreshTriggerMode = RefreshIndicatorTriggerMode.onEdge,
-
-    ///ListView.builder
+    //ListView.builder
     this.controller,
     this.scrollDirection = Axis.vertical,
     this.reverse = false,
@@ -84,13 +42,13 @@ class LoadMoreListView extends StatefulWidget {
     this.keyboardDismissBehavior = ScrollViewKeyboardDismissBehavior.manual,
     this.restorationId,
     this.clipBehavior = Clip.hardEdge,
-
-    ///animation
+    //animation
     this.scrollToLoadMoreWidgetDuration = const Duration(milliseconds: 100),
     this.scrollToLoadMoreWidgetCurve = Curves.fastOutSlowIn,
   })  : separatorBuilder = null,
         super(key: key);
 
+  ///separated
   const LoadMoreListView.separated({
     Key? key,
     required this.itemBuilder,
@@ -100,8 +58,7 @@ class LoadMoreListView extends StatefulWidget {
     this.itemCount = 0,
     this.haveMoreItem = true,
     this.loadMoreWidget,
-
-    ///refresh
+    //refresh
     this.refreshBackgroundColor = Colors.blueAccent,
     this.refreshDisplacement = 40.0,
     this.refreshEdgeOffset = 0.0,
@@ -110,8 +67,7 @@ class LoadMoreListView extends StatefulWidget {
     this.refreshSemanticsValue,
     this.refreshStrokeWidth = RefreshProgressIndicator.defaultStrokeWidth,
     this.refreshTriggerMode = RefreshIndicatorTriggerMode.onEdge,
-
-    ///ListView.separated
+    //ListView.separated
     this.controller,
     this.scrollDirection = Axis.vertical,
     this.reverse = false,
@@ -127,8 +83,7 @@ class LoadMoreListView extends StatefulWidget {
     this.keyboardDismissBehavior = ScrollViewKeyboardDismissBehavior.manual,
     this.restorationId,
     this.clipBehavior = Clip.hardEdge,
-
-    ///animation
+    //animation
     this.scrollToLoadMoreWidgetDuration = const Duration(milliseconds: 100),
     this.scrollToLoadMoreWidgetCurve = Curves.fastOutSlowIn,
   })  : itemExtent = null,
@@ -136,18 +91,100 @@ class LoadMoreListView extends StatefulWidget {
         semanticChildCount = null,
         super(key: key);
 
+  ///Is there more data to load
+  final bool haveMoreItem;
+  ///Trigger the bottom loadMore callback
+  final LoadMoreCallback? onLoadMore;
+  ///pull down onRefresh callback
+  final RefreshCallback? onRefresh;
+  ///Widget displayed at the bottom when loading
+  final Widget? loadMoreWidget;
+
+  //---ListView---
+  ///itemCount like Listview
+  final int itemCount;
+  ///itemBuilder like Listview
+  final IndexedWidgetBuilder itemBuilder;
+  ///separatorBuilder like Listview
+  final IndexedWidgetBuilder? separatorBuilder;
+  ///controller like Listview
+  final ScrollController? controller;
+  ///scrollDirection like Listview
+  final Axis scrollDirection;
+  ///reverse like Listview
+  final bool reverse;
+  ///primary like Listview
+  final bool? primary;
+  ///shrinkWrap like Listview
+  final bool shrinkWrap;
+  ///padding like Listview
+  final EdgeInsetsGeometry? padding;
+  ///itemExtent like Listview
+  final double? itemExtent;
+  ///prototypeItem like Listview
+  final Widget? prototypeItem;
+  ///findChildIndexCallback like Listview
+  final ChildIndexGetter? findChildIndexCallback;
+  ///addAutomaticKeepAlives like Listview
+  final bool addAutomaticKeepAlives;
+  ///addRepaintBoundaries like Listview
+  final bool addRepaintBoundaries;
+  ///addSemanticIndexes like Listview
+  final bool addSemanticIndexes;
+  ///cacheExtent like Listview
+  final double? cacheExtent;
+  ///semanticChildCount like Listview
+  final int? semanticChildCount;
+  ///dragStartBehavior like Listview
+  final DragStartBehavior dragStartBehavior;
+  ///keyboardDismissBehavior like Listview
+  final ScrollViewKeyboardDismissBehavior keyboardDismissBehavior;
+  ///restorationId like Listview
+  final String? restorationId;
+  ///clipBehavior like Listview
+  final Clip clipBehavior;
+
+  //---RefreshIndicator---
+  ///Displacement like RefreshIndicator
+  final double refreshDisplacement;
+  ///EdgeOffset like RefreshIndicator
+  final double refreshEdgeOffset;
+  ///Color like RefreshIndicator
+  final Color? refreshColor;
+  ///BackgroundColor like RefreshIndicator
+  final Color refreshBackgroundColor;
+  ///SemanticsLabel like RefreshIndicator
+  final String? refreshSemanticsLabel;
+  ///SemanticsValue like RefreshIndicator
+  final String? refreshSemanticsValue;
+  ///StrokeWidth like RefreshIndicator
+  final double refreshStrokeWidth;
+  ///TriggerMode like RefreshIndicator
+  final RefreshIndicatorTriggerMode refreshTriggerMode;
+
+  //---animation---
+  ///When the bottom event is triggered, the animation duration of the bottom Widget is displayed
+  final Duration scrollToLoadMoreWidgetDuration;
+  ///When the bottom event is triggered, display the animated Curve of the bottom Widget
+  final Curve scrollToLoadMoreWidgetCurve;
+
+
   @override
   State<StatefulWidget> createState() => _LoadMoreListViewState();
 }
 
 class _LoadMoreListViewState extends State<LoadMoreListView> {
+  ///Is it loading
   bool _isLoadMore = false;
+  ///Whether to create ScrollController in State
   late bool _isControllerCreateAtThisState;
+  ///ListView's ScrollController
   late ScrollController _scrollController;
 
   @override
   void initState() {
     super.initState();
+    //If there is no controller, assign one
     _scrollController = widget.controller ?? ScrollController();
     _isControllerCreateAtThisState = widget.controller == null;
   }
@@ -202,7 +239,6 @@ class _LoadMoreListViewState extends State<LoadMoreListView> {
       physics: const ClampingScrollPhysics(),
       itemBuilder: itemBuilder,
       itemCount: widget.itemCount + (_isLoadMore ? 1 : 0),
-
       ///ListView
       scrollDirection: widget.scrollDirection,
       reverse: widget.reverse,
@@ -251,6 +287,7 @@ class _LoadMoreListViewState extends State<LoadMoreListView> {
   }
 
   Widget itemBuilder(BuildContext context, int index) {
+    //index is usually less than itemCount, if it is equal, it means loading
     if (index == widget.itemCount) {
       return widget.loadMoreWidget ??
           Container(
@@ -265,22 +302,29 @@ class _LoadMoreListViewState extends State<LoadMoreListView> {
   }
 
   loadMore() async {
+    //If there are no more items, jump out
     if (!widget.haveMoreItem) return;
+    //If loading, jump out
     if (_isLoadMore) return;
+    //If there is no onLoadMore call back, jump out
     if (widget.onLoadMore == null) return;
 
     setState(() {
+      //is loading
       _isLoadMore = true;
     });
+    //wait isLoadMore setState
     await Future.delayed(const Duration(milliseconds: 50));
+    //scroll to loadMoreWidget
     _scrollController.animateTo(
       _scrollController.position.maxScrollExtent,
       duration: const Duration(milliseconds: 200),
       curve: Curves.fastOutSlowIn,
     );
-    //call back
+    //call onLoadMore
     await widget.onLoadMore!();
     setState(() {
+      //loaded
       _isLoadMore = false;
     });
   }

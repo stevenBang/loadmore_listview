@@ -11,7 +11,7 @@ In the `pubspec.yaml` of your flutter project, add the following dependency:
 ```yaml
 dependencies:
   ...
-  loadmore_listview: ^1.0.2
+  loadmore_listview: ^1.0.3
 ```
 
 
@@ -25,18 +25,19 @@ import 'package:loadmore_listview/loadmore_listview.dart';
 ### LoadMoreListView.builder
 ```dart
 LoadMoreListView.builder(
+    //is there more data to load
     haveMoreItem: true,
-    //Trigger the bottom loadmore callback
+    //Trigger the bottom loadMore callback
     onLoadMore: () async{
-      //await your api
+      //wait for your api to fetch more items
       await Future.delayed(const Duration(seconds: 1));
     },
     //pull down refresh callback
     onRefresh: () async{
-      //await your api
+      //wait for your api to update the list
       await Future.delayed(const Duration(seconds: 1));
     },
-    //you can set your loadmore Animation
+    //you can set your loadMore Animation
     loadMoreWidget: Container(
         margin: const EdgeInsets.all(20.0),
         alignment: Alignment.center,
@@ -44,6 +45,7 @@ LoadMoreListView.builder(
           valueColor: AlwaysStoppedAnimation(Colors.blueAccent),
         ),
     ),
+    //ListView
     itemCount: 20,
     itemBuilder: (context, index) {
         return Container(

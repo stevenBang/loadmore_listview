@@ -1,6 +1,6 @@
 name: loadmore_listview
-description: An Listview with the Load more item and refresh
-version: 1.0.2
+description: Provide an easy-to-use Listview with load more items and refresh function
+version: 1.0.3
 homepage: https://github.com/stevenBang/loadmore_listview
 repository: https://github.com/stevenBang/loadmore_listview
 
@@ -44,9 +44,9 @@ flutter:
         pluginClass: LoadmoreListviewPlugin
       windows:
         pluginClass: LoadmoreListviewPluginCApi
-#      web:
-#        pluginClass: LoadmoreListviewWeb
-#        fileName: loadmore_listview_web.dart
+      #web:
+      #  pluginClass: LoadmoreListviewWeb
+      #  fileName: loadmore_listview_web.dart
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
