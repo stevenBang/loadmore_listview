@@ -27,8 +27,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-
-
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -85,7 +83,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future loaMoreList() async {
-    await Future.delayed(const Duration(seconds: 1));//await API Response
+    await Future.delayed(const Duration(seconds: 1)); //await API Response
     setState(() {
       for (int i = 0; i < 20; i++) {
         list.add(getRandomString(10));

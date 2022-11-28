@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 typedef LoadMoreCallback = Future<void> Function();
 
 class LoadMoreListView extends StatefulWidget {
-
   ///builder
   const LoadMoreListView.builder({
     Key? key,
@@ -93,81 +92,111 @@ class LoadMoreListView extends StatefulWidget {
 
   ///Is there more data to load
   final bool haveMoreItem;
+
   ///Trigger the bottom loadMore callback
   final LoadMoreCallback? onLoadMore;
+
   ///pull down onRefresh callback
   final RefreshCallback? onRefresh;
+
   ///Widget displayed at the bottom when loading
   final Widget? loadMoreWidget;
 
   //---ListView---
   ///itemCount like Listview
   final int itemCount;
+
   ///itemBuilder like Listview
   final IndexedWidgetBuilder itemBuilder;
+
   ///separatorBuilder like Listview
   final IndexedWidgetBuilder? separatorBuilder;
+
   ///controller like Listview
   final ScrollController? controller;
+
   ///scrollDirection like Listview
   final Axis scrollDirection;
+
   ///reverse like Listview
   final bool reverse;
+
   ///primary like Listview
   final bool? primary;
+
   ///shrinkWrap like Listview
   final bool shrinkWrap;
+
   ///padding like Listview
   final EdgeInsetsGeometry? padding;
+
   ///itemExtent like Listview
   final double? itemExtent;
+
   ///prototypeItem like Listview
   final Widget? prototypeItem;
+
   ///findChildIndexCallback like Listview
   final ChildIndexGetter? findChildIndexCallback;
+
   ///addAutomaticKeepAlives like Listview
   final bool addAutomaticKeepAlives;
+
   ///addRepaintBoundaries like Listview
   final bool addRepaintBoundaries;
+
   ///addSemanticIndexes like Listview
   final bool addSemanticIndexes;
+
   ///cacheExtent like Listview
   final double? cacheExtent;
+
   ///semanticChildCount like Listview
   final int? semanticChildCount;
+
   ///dragStartBehavior like Listview
   final DragStartBehavior dragStartBehavior;
+
   ///keyboardDismissBehavior like Listview
   final ScrollViewKeyboardDismissBehavior keyboardDismissBehavior;
+
   ///restorationId like Listview
   final String? restorationId;
+
   ///clipBehavior like Listview
   final Clip clipBehavior;
 
   //---RefreshIndicator---
   ///Displacement like RefreshIndicator
   final double refreshDisplacement;
+
   ///EdgeOffset like RefreshIndicator
   final double refreshEdgeOffset;
+
   ///Color like RefreshIndicator
   final Color? refreshColor;
+
   ///BackgroundColor like RefreshIndicator
   final Color refreshBackgroundColor;
+
   ///SemanticsLabel like RefreshIndicator
   final String? refreshSemanticsLabel;
+
   ///SemanticsValue like RefreshIndicator
   final String? refreshSemanticsValue;
+
   ///StrokeWidth like RefreshIndicator
   final double refreshStrokeWidth;
+
   ///TriggerMode like RefreshIndicator
   final RefreshIndicatorTriggerMode refreshTriggerMode;
 
   //---animation---
   ///When the bottom event is triggered, the animation duration of the bottom Widget is displayed
   final Duration scrollToLoadMoreWidgetDuration;
+
   ///When the bottom event is triggered, display the animated Curve of the bottom Widget
   final Curve scrollToLoadMoreWidgetCurve;
-
 
   @override
   State<StatefulWidget> createState() => _LoadMoreListViewState();
@@ -176,8 +205,10 @@ class LoadMoreListView extends StatefulWidget {
 class _LoadMoreListViewState extends State<LoadMoreListView> {
   ///Is it loading
   bool _isLoadMore = false;
+
   ///Whether to create ScrollController in State
   late bool _isControllerCreateAtThisState;
+
   ///ListView's ScrollController
   late ScrollController _scrollController;
 
@@ -239,7 +270,7 @@ class _LoadMoreListViewState extends State<LoadMoreListView> {
       physics: const ClampingScrollPhysics(),
       itemBuilder: itemBuilder,
       itemCount: widget.itemCount + (_isLoadMore ? 1 : 0),
-      ///ListView
+      //ListView
       scrollDirection: widget.scrollDirection,
       reverse: widget.reverse,
       primary: widget.primary,
@@ -267,8 +298,7 @@ class _LoadMoreListViewState extends State<LoadMoreListView> {
       separatorBuilder: widget.separatorBuilder!,
       itemBuilder: itemBuilder,
       itemCount: widget.itemCount + (_isLoadMore ? 1 : 0),
-
-      ///ListView
+      //ListView
       scrollDirection: widget.scrollDirection,
       reverse: widget.reverse,
       primary: widget.primary,
