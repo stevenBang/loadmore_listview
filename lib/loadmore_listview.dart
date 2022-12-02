@@ -1,3 +1,4 @@
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -267,7 +268,9 @@ class _LoadMoreListViewState extends State<LoadMoreListView> {
   Widget _getListViewBuilderWidget() {
     return ListView.builder(
       controller: _scrollController,
-      physics: const ClampingScrollPhysics(),
+      physics: const ClampingScrollPhysics(
+        parent: AlwaysScrollableScrollPhysics(),
+      ),
       itemBuilder: itemBuilder,
       itemCount: widget.itemCount + (_isLoadMore ? 1 : 0),
       //ListView
@@ -294,7 +297,9 @@ class _LoadMoreListViewState extends State<LoadMoreListView> {
   Widget _getListViewSeparatedWidget() {
     return ListView.separated(
       controller: _scrollController,
-      physics: const ClampingScrollPhysics(),
+      physics: const ClampingScrollPhysics(
+        parent: AlwaysScrollableScrollPhysics(),
+      ),
       separatorBuilder: widget.separatorBuilder!,
       itemBuilder: itemBuilder,
       itemCount: widget.itemCount + (_isLoadMore ? 1 : 0),
