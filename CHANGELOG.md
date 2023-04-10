@@ -1,4 +1,8 @@
 
+## 1.0.7
+
+- Added support for CustomScrollView.
+
 ## 1.0.6
 
 - Fix the problem that if the list is too short, Refresh cannot be performed.

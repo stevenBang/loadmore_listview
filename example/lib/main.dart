@@ -13,8 +13,14 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
-  bool _hasNext = true;
+class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
+  final List<Widget> _tabs = const [
+    Tab(text: 'builder'),
+    Tab(text: 'separated'),
+    Tab(text: 'customScrollView'),
+  ];
+  late TabController _tabController;
+  bool _hasNextData = true;
   List<String> list = [];
   final _chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz';
   final Random _rnd = Random();
@@ -22,6 +28,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+    _tabController = TabController(length: _tabs.length, vsync: this);
     WidgetsBinding.instance.addPostFrameCallback((_) => getList());
   }
 
@@ -34,34 +41,99 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
+            TabBar(
+              controller: _tabController,
+              labelColor: Colors.black,
+              tabs: _tabs,
+              onTap: (index) {
+                getList();
+              },
+            ),
             Expanded(
-              child: LoadMoreListView.separated(
-                hasMoreItem: _hasNext,
-                onLoadMore: loaMoreList,
-                onRefresh: refreshList,
-                refreshBackgroundColor: Colors.blueAccent,
-                refreshColor: Colors.white,
-                loadMoreWidget: Container(
-                  margin: const EdgeInsets.all(20.0),
-                  alignment: Alignment.center,
-                  child: const CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation(Colors.blueAccent),
+              child: TabBarView(
+                controller: _tabController,
+                children: [
+                  LoadMoreListView.builder(
+                    hasMoreItem: _hasNextData,
+                    onLoadMore: loaMoreList,
+                    onRefresh: refreshList,
+                    refreshBackgroundColor: Colors.blueAccent,
+                    refreshColor: Colors.white,
+                    loadMoreWidget: Container(
+                      margin: const EdgeInsets.all(20.0),
+                      alignment: Alignment.center,
+                      child: const CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation(Colors.blueAccent),
+                      ),
+                    ),
+                    itemCount: list.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        margin: const EdgeInsets.all(30),
+                        width: double.infinity,
+                        alignment: Alignment.center,
+                        child: Text(list[index]),
+                      );
+                    },
                   ),
-                ),
-                itemCount: list.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    margin: const EdgeInsets.all(30),
-                    width: double.infinity,
-                    alignment: Alignment.center,
-                    child: Text(list[index]),
-                  );
-                },
-                separatorBuilder: (context, index) {
-                  return const Divider();
-                },
+                  LoadMoreListView.separated(
+                    hasMoreItem: _hasNextData,
+                    onLoadMore: loaMoreList,
+                    onRefresh: refreshList,
+                    refreshBackgroundColor: Colors.blueAccent,
+                    refreshColor: Colors.white,
+                    loadMoreWidget: Container(
+                      margin: const EdgeInsets.all(20.0),
+                      alignment: Alignment.center,
+                      child: const CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation(Colors.blueAccent),
+                      ),
+                    ),
+                    itemCount: list.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        margin: const EdgeInsets.all(30),
+                        width: double.infinity,
+                        alignment: Alignment.center,
+                        child: Text(list[index]),
+                      );
+                    },
+                    separatorBuilder: (context, index) {
+                      return const Divider();
+                    },
+                  ),
+                  LoadMoreListView.customScrollView(
+                    hasMoreItem: _hasNextData,
+                    onLoadMore: loaMoreList,
+                    onRefresh: refreshList,
+                    refreshBackgroundColor: Colors.blueAccent,
+                    refreshColor: Colors.white,
+                    loadMoreWidget: Container(
+                      margin: const EdgeInsets.all(20.0),
+                      alignment: Alignment.center,
+                      child: const CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation(Colors.blueAccent),
+                      ),
+                    ),
+                    slivers: [
+                      SliverList(
+                        delegate: SliverChildBuilderDelegate(
+                          (context, index) {
+                            return Container(
+                              margin: const EdgeInsets.all(30),
+                              width: double.infinity,
+                              alignment: Alignment.center,
+                              child: Text(list[index]),
+                            );
+                          },
+                          childCount: list.length,
+                        ),
+                      )
+                    ],
+                  ),
+                ],
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -70,6 +142,7 @@ class _MyAppState extends State<MyApp> {
 
   Future getList() async {
     list.clear();
+    _hasNextData = true;
     setState(() {
       for (int i = 0; i < 20; i++) {
         list.add(getRandomString(10));
@@ -88,7 +161,7 @@ class _MyAppState extends State<MyApp> {
       for (int i = 0; i < 20; i++) {
         list.add(getRandomString(10));
       }
-      _hasNext = list.length < 100;
+      _hasNextData = list.length < 100;
     });
   }
 

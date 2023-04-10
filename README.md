@@ -1,6 +1,8 @@
 # Load More Listview
 
-An Listview with the Load more item and refresh
+An Widget with the Load more item and refresh
+
+Base on `ListView` and `CustomScrollListview`
 
 ![LoadMoreListView.builder](https://media.giphy.com/media/BsyHEpLrxFCCLaANKg/giphy.gif)
 
@@ -11,7 +13,7 @@ In the `pubspec.yaml` of your flutter project, add the following dependency:
 ```yaml
 dependencies:
   ...
-  loadmore_listview: ^1.0.6
+  loadmore_listview: ^1.0.7
 ```
 
 
@@ -65,5 +67,27 @@ LoadMoreListView.separated(
     separatorBuilder: (context, index) {
       return const Divider();
     },
+);
+```
+
+### LoadMoreListView.customScrollView
+```dart
+LoadMoreListView.customScrollView(
+    //...
+    slivers: [
+        SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                return Container(
+                  margin: const EdgeInsets.all(30),
+                  width: double.infinity,
+                  alignment: Alignment.center,
+                  child: Text(list[index]),
+                );
+              },
+              childCount: list.length,
+            ),
+        ),
+    ],
 );
 ```
